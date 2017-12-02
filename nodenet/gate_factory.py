@@ -4,7 +4,7 @@ GATE_TYPES = {
     "gen": [
         "gen",
         0,
-        {"threshold": 0}
+        {"threshold": -2}
     ],
     "por": [
         "por",
@@ -48,6 +48,9 @@ GATE_TYPES = {
     ]
 }
 
-def gate_factory(gate_names):
+def gate_factory(gate_names, is_output_node):
     # return a list of gates, generated from gate types based on a list of names
-    return [Gate(*GATE_TYPES.get(name)) for name in gate_names]
+    if is_output_node == False:
+        return [Gate(*GATE_TYPES.get(name) + ["default"]) for name in gate_names]
+    else: 
+        return [Gate(*GATE_TYPES.get(name) + ["output"]) for name in gate_names]

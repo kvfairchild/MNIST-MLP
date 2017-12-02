@@ -9,7 +9,6 @@ class Nodenet:
 		self.node_dict = {}
 		self.layers = []
 		self.links_list = []
-		self.exit_node_list = None
 
 	@property
 	def name(self):
@@ -32,3 +31,4 @@ class Nodenet:
 
 	def add_node(self, node):
 		self.node_dict[node.name] = node
+

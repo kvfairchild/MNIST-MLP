@@ -9,4 +9,4 @@ class Link:
         self.origin_gate = origin_gate
         self.target_node = target_node
         self.target_slot = target_slot
-        self.weight = weight if weight is not None else random.random()
+        self.weight = weight if weight is not None else random.uniform(-.25, .25)
