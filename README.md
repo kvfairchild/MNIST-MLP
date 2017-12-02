@@ -13,7 +13,7 @@ Layers can be adjusted in main.py:
 
     network_dimensions = [784, 60, 10]
 
-Uncomment the following code block in nodenet/control.py to create a folder of learned digits, updated every 5k images:
+Uncomment the following code block in nodenet/control.py to create a folder of learned digits, updated every 5k images (works for 2 layers only):
 
     # # print images of digit recognition
     # if image_index % 5000 == 0:
