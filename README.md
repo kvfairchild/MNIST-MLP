@@ -1,5 +1,5 @@
 # *n*-layer perceptron for MNIST
-#####Trains on 60,000 MNIST images, tests on 10,000 MNIST images
+**Trains on 60,000 MNIST images, tests on 10,000 MNIST images**
 
 This is a from-scratch net that does not employ machine learning libraries.  Due to a state-oriented design (it was built to be extended into cognitive architectures), runtime is longer than most standard MNIST implementations (e.g. ~30 min train, <4 min test on 2 layers). 
 
