@@ -13,14 +13,21 @@ Layers can be adjusted in main.py:
 
     network_dimensions = [784, 60, 10]
 
-Uncomment the following code block in nodenet/control.py to create a folder of learned digits, updated every 5k images (works for 2 layers only):
+Set optimal initialization in link.py (default 3+ layers):
 
-    # # print images of digit recognition
-    # if image_index % 5000 == 0:
-    #   image_files = os.path.join(os.getcwd(), "image_files")
-    #   if not os.path.exists(image_files):
-    #       os.mkdir(image_files)
-    #   _create_images(nodenet, image_files)
+    # OPTIMAL WEIGHT INITIALIZATION 
+    
+    # 2 layers:
+    # self.weight = weight if weight is not None else weight == 0
+
+    # 3+ layers:
+    self.weight = weight if weight is not None else random.uniform(-.25, .25)
+
+Uncomment the following code block in nodenet/control.py to create a folder of final learned digit representations (works for 2 layers only):
+
+	# # print images of final learned digits
+	# if run_type == "test" and image_index == 0:
+	# 	_create_images(nodenet)
 
 ## Test
 python -m unittest discover -v

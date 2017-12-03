@@ -16,13 +16,10 @@ def run(nodenet, target_output, image_index, run_type):
 	if run_type == "train":
 		_update_weights(nodenet, output, target_output, image_index)
 	
-		# # print images of digit recognition
-		# if image_index % 5000 == 0:
-		#   image_files = os.path.join(os.getcwd(), "image_files")
-		#   if not os.path.exists(image_files):
-		#       os.mkdir(image_files)
-		#   _create_images(nodenet, image_files)
-	
+	# # print images of final learned digits
+	# if run_type == "test" and image_index == 0:
+	# 	_create_images(nodenet)
+
 	_zero_nodes(nodenet)
 	_zero_gates(nodenet)
  
@@ -106,7 +103,11 @@ def _decay_learning_rate(nodenet):
 
 # VISUALIZE LEARNED IMAGES
 
-def _create_images(nodenet, image_files):
+def _create_images(nodenet):
+	image_files = os.path.join(os.getcwd(), "image_files")
+	if not os.path.exists(image_files):
+		os.mkdir(image_files)
+
 	for node_index, node in enumerate(nodenet.layers[len(nodenet.layers)-1]):
 		weight_matrix = [link.weight for link in nodenet.links_list[0][node_index]]
 		chunk_length = int(sqrt(len(weight_matrix)))

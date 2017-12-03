@@ -11,10 +11,6 @@ from nodenet.file_parser import MNIST_file_parser
 
 def build_nodenet(nodenet):
 
-	# OPTIMAL INITIALIZATION (link.py)
-	# 2 layers: initial weights random.uniform(0, .5)
-	# 3+ layers: initial weights random.uniform(-.25, .25)
-
 	# enter nodes per layer
 	network_dimensions = [784, 60, 10]
 
