@@ -19,6 +19,12 @@ Uncomment the following code block in nodenet/control.py to create a folder of f
 	# if run_type == "test" and image_index == 0:
 	# 	_create_images(nodenet)
 
+You can also save your own net by uncommenting this line in main.py under "TEST" before running:
+
+    # config.save_weights(nodenet, network_dimensions)
+
+To test a saved net, follow the directions in the "Demo" section, replacing *demo* in the command with its input dimensions.
+
 ## Demo
 Pretrained nets are available for demo on the testing data.
 
@@ -36,6 +42,7 @@ Available pretrained nets:
 * 784,10 *(~91.7% accuracy)*
 
 ## Unit Test
-####python -m unittest discover -v
+
+#### python -m unittest discover -v
 
 (Requires mock 1.0.1)
