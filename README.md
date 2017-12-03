@@ -19,16 +19,16 @@ Uncomment the following code block in nodenet/control.py to create a folder of f
 	# if run_type == "test" and image_index == 0:
 	# 	_create_images(nodenet)
 
-You can also save your own net by uncommenting this line in main.py under "TEST" before running:
+You can also save your own net ([dill](https://pypi.python.org/pypi/dill) required) by uncommenting this line in main.py under "TEST" before running:
 
     # config.save_weights(nodenet, network_dimensions)
 
 To test a saved net, follow the directions in the "Demo" section, replacing *demo* in the command with its input dimensions.
 
 ## Demo
-Pretrained nets are available for demo on the testing data.
+Pretrained nets are available for demo on the testing data.  (This requires [dill](https://pypi.python.org/pypi/dill), which can be quickly acquired with *pip install dill*.)
 
-They can be called with the following command, where *demo* is the specifications of the desired pretrained net:
+The pretrained nets can be called with the following command, where *demo* is the specifications of the desired pretrained net:
 
 #### ./main.py *demo* pretrain
 
