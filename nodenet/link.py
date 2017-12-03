@@ -13,7 +13,7 @@ class Link:
 		# OPTIMAL WEIGHT INITIALIZATION 
 
 		# 2 layers:
-		# self.weight = weight if weight is not None else weight == 0
+		self.weight = weight if weight is not None else weight == 0
 
 		# 3+ layers:
-		self.weight = weight if weight is not None else random.uniform(-.25, .25)
+		# self.weight = weight if weight is not None else random.uniform(-.125, .125)

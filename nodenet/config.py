@@ -1,5 +1,7 @@
 from __future__ import division
+import dill as pickle
 import numpy as np
+import os
 
 from .link import Link
 from .node_factory import node_factory
@@ -50,3 +52,31 @@ def set_activation(nodenet, image):
 		pixel = flattened_image[i] * (1/255) # normalize values between [0,1]
 		slot = node.get_slot("gen")
 		slot.activation = pixel[0]
+
+# PRETRAINED NETWORK
+
+def save_weights(nodenet, network_dimensions):
+	config_specs = os.path.join(os.getcwd(), "nodenet/config_specs")
+	if not os.path.exists(config_specs):
+		os.mkdir(config_specs)
+	filepath = os.path.join(config_specs, str(network_dimensions) + ".py")
+
+	weight_matrix = [[[link.weight for link in node] for node in layer] for layer in nodenet.links_list]
+
+	with open(filepath, "wb") as file:
+		pickle.dump(weight_matrix, file)
+
+def initialize_net(nodenet, network_dimensions):
+
+	config_specs = os.path.join(os.getcwd(), "nodenet/config_specs")
+	if not os.path.exists(config_specs):
+		raise ValueError("no pretrained networks are available")
+	filepath = os.path.join(config_specs, str(network_dimensions) + ".py")
+
+	with open(filepath, "rb") as file:
+		weight_matrix = pickle.load(file)
+
+	for layer_index, layer in enumerate(nodenet.links_list):
+		for node_index, node in enumerate(layer):
+			for link_index, link in enumerate(node):
+				link.weight = weight_matrix[layer_index][node_index][link_index]

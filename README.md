@@ -5,23 +5,13 @@ This is a from-scratch net that does not employ machine learning libraries.  Due
 
 
 ## Run
-Default *n* = 3, with to 784-node input, 60-node hidden, 10-node output (~93.7% accuracy). 
+Use the following command to specify network dimensions, build, run, and test an *n*-layer MNIST classifier:
 
-#### Use ./main.py to run
+#### ./main.py 784,...,10
 
-Layers can be adjusted in main.py:
+For example, the following input will build a 3-layer classifier with 784 input nodes, 60 hidden nodes, and 10 output nodes:
 
-    network_dimensions = [784, 60, 10]
-
-Set optimal initialization in link.py (default 3+ layers):
-
-    # OPTIMAL WEIGHT INITIALIZATION 
-    
-    # 2 layers:
-    # self.weight = weight if weight is not None else weight == 0
-
-    # 3+ layers:
-    self.weight = weight if weight is not None else random.uniform(-.25, .25)
+    ./main.py 784,60,10
 
 Uncomment the following code block in nodenet/control.py to create a folder of final learned digit representations (works for 2 layers only):
 
@@ -29,7 +19,23 @@ Uncomment the following code block in nodenet/control.py to create a folder of f
 	# if run_type == "test" and image_index == 0:
 	# 	_create_images(nodenet)
 
-## Test
-python -m unittest discover -v
+## Demo
+Pretrained nets are available for demo on the testing data.
+
+They can be called with the following command, where *demo* is the specifications of the desired pretrained net:
+
+#### ./main.py *demo* pretrain
+
+For example, the following input will run a pretrained 2-layer classifier on the MNIST testing data:
+
+    ./main.py 784,10 pretrain
+
+Available pretrained nets:
+
+* 784,60,10 *(~93.7% accuracy)*
+* 784,10 *(~91.7% accuracy)*
+
+## Unit Test
+####python -m unittest discover -v
 
 (Requires mock 1.0.1)
